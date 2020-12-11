@@ -8,10 +8,13 @@ class BusquedaBinaria{
 	
 	public void ejecutar(long array[], long dato) {
 		
+		long tInicio = System.nanoTime();
 		
 		binarySearch(array, dato, 0, array.length-1);
 		
-		System.out.println();
+		long tFin = System.nanoTime();
+		System.out.println("Tiempo de ejecucion en ordenamiento por burbuja: " + (tFin-tInicio));
+
 	}
 	
 	public boolean binarySearch(long[] data, long target, int low, int high) {
