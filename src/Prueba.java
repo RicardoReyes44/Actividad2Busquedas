@@ -46,9 +46,10 @@ class Hash{
 	int tamaño;
 	int contador;
 
-	public Hash(int tam, String []arreglo) {
+	public Hash(int tam) {
 		tamaño = tam;
-		this.arreglo = arreglo;
+		arreglo = new String[tam];
+		Arrays.fill(arreglo, "-1");
 	}
 	
 	public void funcionHash(String[] cadArreglo, String[] arreglo) {
@@ -56,7 +57,7 @@ class Hash{
 		// Ciclo para asiganar a la varible elemento el valor de la cadena
 		for (i = 0; i < cadArreglo.length; i++) {
 			String elemento = cadArreglo[i];
-			int indiceArreglo = Integer.parseInt(elemento) % 20;
+			int indiceArreglo = Integer.parseInt(elemento) % 100;
 			System.out.println("Indice: " + indiceArreglo + " para " + elemento);
 			// Mpetodo para solucionar una colision
 			while (arreglo[indiceArreglo] != "-1") {
@@ -75,15 +76,15 @@ class Hash{
 		int j;
 
 		for (int i = 0; i < 1; i++) {
-			incremento += 20;
+			incremento += 100;
 			System.out.println("");
 			System.out.println("------------------------------------------------------------------");
-			for (j = incremento - 20; j < incremento; j++) {
+			for (j = incremento - 100; j < incremento; j++) {
 				System.out.format(" | %3s " + " ", j);
 			}
 			System.out.println(" | ");
 			System.out.println();
-			for (j = incremento - 20; j < incremento; j++) {
+			for (j = incremento - 100; j < incremento; j++) {
 				if (arreglo[j].equals("-1")) {
 					System.out.println(" | ");
 				} else {
@@ -100,26 +101,30 @@ class Hash{
 	// Metodo para buscar una clave de los elementos
 	public String buscarClave(String elemento) {
 		int indiceArrglo = Integer.parseInt(elemento) % 7;
-		int contador = 0;
+		int contador = 0, pasadas=0, comparaciones=0;
 		
 		while (arreglo[indiceArrglo] != "-1") {
+			pasadas++;
+			comparaciones++;
 			if (arreglo[indiceArrglo].equals(elemento)) {
-				System.out.println("Elemento " + elemento + " se encontro en el indice" + indiceArrglo);
+				comparaciones++;
 				return arreglo[indiceArrglo];
 			}
 			indiceArrglo++;
 			indiceArrglo %= tamaño;
 			contador++;
-			if (contador > 20) {
+			if (contador > 100) {
 				System.out.print("Error");
 				break;
 			}
+			comparaciones++;
 		}
 		return null;
 	}
-	}
 }
 
+
+// ----------------------------------------------
 
 public class Prueba {
 	
@@ -168,10 +173,20 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		
+		long array[] = generar();
+		String array2[] = new String[100];
+		
+		System.out.println(Arrays.toString(array));
+		
+		for(int i=0; i<100; i++) {
+			array2[i] = String.valueOf(array[i]);
+		}
+		
 		BusquedaBinaria bs = new BusquedaBinaria();
+		Hash h = new Hash(array.length);
 		Scanner entrada = new Scanner(System.in);
 		
-		long array[] = generar();
+		h.funcionHash(array2, h.arreglo);
 		
 		do {
 		try {
@@ -192,7 +207,9 @@ public class Prueba {
 				
 			}else if(opcion==2) {
 
-				
+				System.out.print("\nIntroduce numero a buscar: ");
+				String elemento = entrada.next();
+				h.buscarClave(elemento);
 
 			}else if(opcion==3) {
 				
