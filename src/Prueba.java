@@ -25,13 +25,24 @@ class BusquedaBinaria{
 }
 
 public class Prueba {
+	
+	public static long[] generar() {
+		
+		long array[] = new long[100];
+		
+		for(int i=0; i<100; i++) {
+			array[i] = (long)(Math.random()*100+1);
+		}
+		
+		return array;
+	}
 
 	public static void main(String[] args) {
 		
 		BusquedaBinaria bs = new BusquedaBinaria();
 		Scanner entrada = new Scanner(System.in);
 		
-		long array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+		long array[] = generar();
 		
 		do {
 		try {
@@ -48,7 +59,7 @@ public class Prueba {
 				
 				System.out.print("\nIntroduce numero a buscar: ");
 				long numero = entrada.nextLong();
-				//bs.ejecutar(array, numero, 0, array.length-1);
+				bs.ejecutar(array, numero);
 				
 			}else if(opcion==2) {
 
