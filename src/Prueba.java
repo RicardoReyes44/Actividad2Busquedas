@@ -26,6 +26,13 @@ class BusquedaBinaria{
 
 public class Prueba {
 	
+     public static long[] ejecutar(long[] array) {
+	}
+	
+	public static long[] quickSort(long[] array, int izq, int der){
+		
+	}
+	
 	public static long[] generar() {
 		
 		long array[] = new long[100];
@@ -33,6 +40,8 @@ public class Prueba {
 		for(int i=0; i<100; i++) {
 			array[i] = (long)(Math.random()*100+1);
 		}
+		
+		
 		
 		return array;
 	}
