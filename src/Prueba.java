@@ -45,6 +45,7 @@ class Hash{
 	String[] arreglo;
 	int tamaño;
 	int contador;
+	int pasadas=0, comparaciones=0;
 
 	public Hash(int tam) {
 		tamaño = tam;
@@ -98,12 +99,26 @@ class Hash{
 		}
 	}
 
+	public String buscar(String elemento) {
+		long tInicio = System.nanoTime();
+		
+		String eleme = buscarClave(elemento);
+		
+        long tFin= System.nanoTime();
+		
+		System.out.println("Pasadas: " + pasadas);
+		System.out.println("Comparaciones: " + comparaciones);
+		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
+		
+		return eleme;
+	}
+	
 	// Metodo para buscar una clave de los elementos
 	public String buscarClave(String elemento) {
 		int indiceArrglo = Integer.parseInt(elemento) % 7;
-		int contador = 0, pasadas=0, comparaciones=0;
+		int contador = 0;
 		
-		long tInicio = System.nanoTime();
+		
 		while (arreglo[indiceArrglo] != "-1") {
 			pasadas++;
 			comparaciones++;
@@ -120,12 +135,6 @@ class Hash{
 			}
 			comparaciones++;
 		}
-		
-		long tFin= System.nanoTime();
-		
-		System.out.println("Pasadas: " + pasadas);
-		System.out.println("Comparaciones: " + comparaciones);
-		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
 		
 		return null;
 	}
