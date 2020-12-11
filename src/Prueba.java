@@ -15,7 +15,7 @@ class BusquedaBinaria{
 		long tFin = System.nanoTime();
 		System.out.println("Pasadas: " + pasadas);
 		System.out.println("Comparaciones: " + comparaciones);
-		System.out.println("Tiempo de ejecucion en ordenamiento por burbuja: " + (tFin-tInicio));
+		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
 
 	}
 	
@@ -34,12 +34,24 @@ class BusquedaBinaria{
 			comparaciones++;
 			return binarySearch(data, target, low, mid - 1);
 		}else {
+			comparaciones++;
 			return binarySearch(data, target, mid + 1, high);
 		}
 	}
 	}
-	
 }
+
+class Hash{
+	String[] arreglo;
+	int tamaño;
+	int contador;
+
+	// Constructor
+	public Hash(int tam) {
+		tamaño = tam;
+	}
+}
+
 
 public class Prueba {
 	
