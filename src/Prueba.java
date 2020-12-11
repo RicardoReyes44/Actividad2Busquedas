@@ -57,7 +57,30 @@ class Hash{
 
 	// Metodo para mostrar la funcion hash
 	public void mostrar() {
-		
+		int incremento = 0;
+		int j;
+
+		for (int i = 0; i < 1; i++) {
+			incremento += 20;
+			System.out.println("");
+			System.out.println("------------------------------------------------------------------");
+			for (j = incremento - 20; j < incremento; j++) {
+				System.out.format(" | %3s " + " ", j);
+			}
+			System.out.println(" | ");
+			System.out.println();
+			for (j = incremento - 20; j < incremento; j++) {
+				if (arreglo[j].equals("-1")) {
+					System.out.println(" | ");
+				} else {
+					System.out.print(String.format(" | %3s" + " ", arreglo[j]));
+				}
+			}
+
+			System.out.println("|");
+			System.out.println("------------------------------------------------------------------");
+			System.out.println("");
+		}
 	}
 
 	// Metodo para buscar una clave de los elementos
