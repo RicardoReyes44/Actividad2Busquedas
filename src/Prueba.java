@@ -3,22 +3,34 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class BusquedaBinaria{
+	int pasadas = 0;
+	int comparaciones = 0;
 	
 	public void ejecutar(long array[], long dato) {
+		
+		
 		binarySearch(array, dato, 0, array.length-1);
+		
+		System.out.println();
 	}
 	
 	public boolean binarySearch(long[] data, long target, int low, int high) {
-	if (low > high)
+		pasadas++;
+	if (low > high) {
+		comparaciones++;
 		return false;
-	else {
+	}else {
+		comparaciones++;
 		int mid = (low + high) / 2;
-		if (target == data[mid])
+		if (target == data[mid]) {
+			comparaciones++;
 			return true;
-		else if (target < data[mid])
+		}else if (target < data[mid]) {
+			comparaciones++;
 			return binarySearch(data, target, low, mid - 1);
-		else
+		}else {
 			return binarySearch(data, target, mid + 1, high);
+		}
 	}
 	}
 	
@@ -26,11 +38,36 @@ class BusquedaBinaria{
 
 public class Prueba {
 	
-     public static long[] ejecutar(long[] array) {
+    public static long[] ejecutar(long[] array) {
+		
+		long []ordenado = quickSort(array, 0, array.length-1);
+		
+		return ordenado;
 	}
 	
 	public static long[] quickSort(long[] array, int izq, int der){
+		long pivote = array[izq];
+		int i = izq, j=der;
+		long aux;
 		
+		while(i<j) {
+			while(array[i]<=pivote && i<j) i++;
+			while(array[j]>pivote) j--;
+			if(i<j) {
+				aux = array[i];
+				array[i] = array[j];
+				array[j] = aux;
+			}
+		}
+		array[izq] = array[j];
+		array[j] = pivote;
+		
+		if(izq<j-1)
+			quickSort(array, izq, j-1);
+		if(j+1<der)
+			quickSort(array, j+1, der);
+		
+		return array;
 	}
 	
 	public static long[] generar() {
@@ -41,9 +78,7 @@ public class Prueba {
 			array[i] = (long)(Math.random()*100+1);
 		}
 		
-		
-		
-		return array;
+		return ejecutar(array);
 	}
 
 	public static void main(String[] args) {
@@ -73,6 +108,7 @@ public class Prueba {
 			}else if(opcion==2) {
 
 				
+
 			}else if(opcion==3) {
 				
 				break;
