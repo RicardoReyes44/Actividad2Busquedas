@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 class BusquedaBinaria{
 	
+	public void ejecutar(long array[], long dato) {
+		binarySearch(array, dato, 0, array.length-1);
+	}
+	
 	public boolean binarySearch(long[] data, long target, int low, int high) {
 	if (low > high)
 		return false;
@@ -44,6 +48,7 @@ public class Prueba {
 				
 				System.out.print("\nIntroduce numero a buscar: ");
 				long numero = entrada.nextLong();
+				//bs.ejecutar(array, numero, 0, array.length-1);
 				
 			}else if(opcion==2) {
 
