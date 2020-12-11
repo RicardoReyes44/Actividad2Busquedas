@@ -99,7 +99,24 @@ class Hash{
 
 	// Metodo para buscar una clave de los elementos
 	public String buscarClave(String elemento) {
+		int indiceArrglo = Integer.parseInt(elemento) % 7;
+		int contador = 0;
+		
+		while (arreglo[indiceArrglo] != "-1") {
+			if (arreglo[indiceArrglo].equals(elemento)) {
+				System.out.println("Elemento " + elemento + " se encontro en el indice" + indiceArrglo);
+				return arreglo[indiceArrglo];
+			}
+			indiceArrglo++;
+			indiceArrglo %= tamaño;
+			contador++;
+			if (contador > 20) {
+				System.out.print("Error");
+				break;
+			}
+		}
 		return null;
+	}
 	}
 }
 
