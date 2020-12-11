@@ -103,6 +103,7 @@ class Hash{
 		int indiceArrglo = Integer.parseInt(elemento) % 7;
 		int contador = 0, pasadas=0, comparaciones=0;
 		
+		long tInicio = System.nanoTime();
 		while (arreglo[indiceArrglo] != "-1") {
 			pasadas++;
 			comparaciones++;
@@ -119,6 +120,13 @@ class Hash{
 			}
 			comparaciones++;
 		}
+		
+		long tFin= System.nanoTime();
+		
+		System.out.println("Pasadas: " + pasadas);
+		System.out.println("Comparaciones: " + comparaciones);
+		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
+		
 		return null;
 	}
 }
