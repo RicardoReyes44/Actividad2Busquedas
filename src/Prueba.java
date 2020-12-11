@@ -46,8 +46,23 @@ class Hash{
 	int tamaño;
 	int contador;
 
-	public Hash(int tam) {
+	public Hash(int tam, String []arreglo) {
 		tamaño = tam;
+		this.arreglo = arreglo;
+	}
+	
+	public void funcionHash(String[] cadArreglo, String[] arreglo) {
+
+	}
+
+	// Metodo para mostrar la funcion hash
+	public void mostrar() {
+		
+	}
+
+	// Metodo para buscar una clave de los elementos
+	public String buscarClave(String elemento) {
+		return null;
 	}
 }
 
