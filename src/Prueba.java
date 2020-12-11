@@ -46,7 +46,6 @@ class Hash{
 	int tamaño;
 	int contador;
 
-	// Constructor
 	public Hash(int tam) {
 		tamaño = tam;
 	}
