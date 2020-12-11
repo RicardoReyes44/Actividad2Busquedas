@@ -52,7 +52,21 @@ class Hash{
 	}
 	
 	public void funcionHash(String[] cadArreglo, String[] arreglo) {
-
+		int i;
+		// Ciclo para asiganar a la varible elemento el valor de la cadena
+		for (i = 0; i < cadArreglo.length; i++) {
+			String elemento = cadArreglo[i];
+			int indiceArreglo = Integer.parseInt(elemento) % 20;
+			System.out.println("Indice: " + indiceArreglo + " para " + elemento);
+			// Mpetodo para solucionar una colision
+			while (arreglo[indiceArreglo] != "-1") {
+				indiceArreglo++;
+				System.out.println("Colisión en el indice: " + (indiceArreglo - 1) + " cambiando por " + indiceArreglo);
+				// Cambiar al indice siguiente y asi evitar la colision
+				indiceArreglo %= tamaño; // Para volver a sacar el valor
+			}
+			arreglo[indiceArreglo] = elemento;
+		}
 	}
 
 	// Metodo para mostrar la funcion hash
