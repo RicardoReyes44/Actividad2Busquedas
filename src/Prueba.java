@@ -13,6 +13,8 @@ class BusquedaBinaria{
 		binarySearch(array, dato, 0, array.length-1);
 		
 		long tFin = System.nanoTime();
+		System.out.println("Pasadas: " + pasadas);
+		System.out.println("Comparaciones: " + comparaciones);
 		System.out.println("Tiempo de ejecucion en ordenamiento por burbuja: " + (tFin-tInicio));
 
 	}
