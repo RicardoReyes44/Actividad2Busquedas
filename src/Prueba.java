@@ -16,6 +16,7 @@ class BusquedaBinaria{
 		System.out.println("Pasadas: " + pasadas);
 		System.out.println("Comparaciones: " + comparaciones);
 		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
+		pasadas = comparaciones = 0;
 
 	}
 	
@@ -109,6 +110,7 @@ class Hash{
 		System.out.println("Pasadas: " + pasadas);
 		System.out.println("Comparaciones: " + comparaciones);
 		System.out.println("Tiempo de ejecucion: " + (tFin-tInicio));
+		pasadas = comparaciones = 0;
 		
 		return eleme;
 	}
@@ -226,7 +228,7 @@ public class Prueba {
 
 				System.out.print("\nIntroduce numero a buscar: ");
 				String elemento = entrada.next();
-				h.buscarClave(elemento);
+				h.buscar(elemento);
 
 			}else if(opcion==3) {
 				
